@@ -21,9 +21,8 @@ public class WeatherApiController {
     private HttpStatus status; //last run status
     String last_run = null; //last run day of month
 
-    @GetMapping("/tata")   //added to end of prefix as endpoint
-    public ResponseEntity<JSONObject> getTATA() {
-
+    @GetMapping("/sd")   //added to end of prefix as endpoint
+    public ResponseEntity<JSONObject> getSD() {
         //calls API once a day, sets body and status properties
         String today = new Date().toString().substring(0,10); 
         if (last_run == null || !today.equals(last_run))
@@ -38,14 +37,10 @@ public class WeatherApiController {
                 .method("GET", HttpRequest.BodyPublishers.noBody())
                 .build();
 
-                //RapidAPI request and response
                 HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-                String body = response.body();
-                System.out.println(body);
 
                 //JSONParser extracts text body and parses to JSONObject
-                JSONArray arr =  (JSONArray) new JSONParser().parse(body);
-                this.body = (JSONObject) arr.get(0);
+                this.body = (JSONObject) new JSONParser().parse(response.body());
                 this.status = HttpStatus.OK;  //200 success
                 this.last_run = today;
             }
