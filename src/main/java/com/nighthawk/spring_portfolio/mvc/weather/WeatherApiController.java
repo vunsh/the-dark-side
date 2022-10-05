@@ -32,7 +32,7 @@ public class WeatherApiController {
 
                 //RapidAPI header
                 HttpRequest request = HttpRequest.newBuilder()
-                .uri(URI.create("https://us-weather-by-zip-code.p.rapidapi.com/getweatherzipcode?zip=94111"))
+                .uri(URI.create("https://us-weather-by-zip-code.p.rapidapi.com/getweatherzipcode?zip=92127"))
                 .header("X-RapidAPI-Key", "33724f3274msh05d93db081cb062p14a3bajsnf355149933ab")
                 .header("X-RapidAPI-Host", "us-weather-by-zip-code.p.rapidapi.com")
                 .method("GET", HttpRequest.BodyPublishers.noBody())
