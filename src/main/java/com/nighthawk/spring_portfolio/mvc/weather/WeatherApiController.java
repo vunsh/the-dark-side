@@ -7,21 +7,23 @@ import java.net.http.HttpResponse;
 import java.util.Date;
 import java.util.HashMap;
 
+import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-@RestController // annotation to create a RESTful web services
+@Controller // annotation to create a RESTful web services
 @RequestMapping("/api/weather")  //prefix of API
 public class WeatherApiController {
     private JSONObject body; //last run result
-    private HttpStatus status; //last run status
+    private JSONArray data;
     String last_run = null; //last run day of month
+    private String temp;
 
     @GetMapping("/sandiego")   //added to end of prefix as endpoint
-    public ResponseEntity<JSONObject> getSD() {
+    public String getSD(String temp, Model model) {
         //calls API once a day, sets body and status properties
         String today = new Date().toString().substring(0,10); 
         if (last_run == null || !today.equals(last_run))
@@ -35,10 +37,11 @@ public class WeatherApiController {
                 .build();
 
                 HttpResponse<String> response = HttpClient.newHttpClient().send(request, HttpResponse.BodyHandlers.ofString());
-
                 //JSONParser extracts text body and parses to JSONObject
                 this.body = (JSONObject) new JSONParser().parse(response.body());
-                this.status = HttpStatus.OK;  //200 success
+                this.data = (JSONArray) this.body.get("data");
+                this.temp = (String) ((JSONObject) this.data.get(0)).get("temp").toString();
+                model.addAttribute("temp", this.temp);
                 this.last_run = today;
                 //get the temp from body
             }
@@ -46,13 +49,10 @@ public class WeatherApiController {
                 HashMap<String, String> status = new HashMap<>();
                 status.put("status", "RapidApi failure: " + e);
                 //Setup object for error
-                this.status = HttpStatus.INTERNAL_SERVER_ERROR; //500 error
                 this.last_run = null;
             }
         }
 
-        //return JSONObject in RESTful style
-        System.out.println(body);
-        return new ResponseEntity<>(body, status);
+        return "weather";
     }
 }
