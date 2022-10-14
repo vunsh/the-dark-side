@@ -13,4 +13,4 @@ volumes:
     driver_opts:
       o: bind
       type: none
-      device: /home/ubuntu/the-dark-side/volumes/
+      device: /home/ubuntu/T8016_quizme/volumes/
