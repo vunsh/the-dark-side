@@ -20,5 +20,5 @@ public class FlashcardSets {
     private String name;
 
     @ElementCollection(fetch = FetchType.EAGER)
-    private Map <String, String> csflashcards = new HashMap <>();
+    private Map <String, String> flashcards = new HashMap <>();
 }
