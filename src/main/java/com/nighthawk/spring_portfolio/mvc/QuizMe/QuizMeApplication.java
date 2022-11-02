@@ -44,10 +44,10 @@ public class QuizMeApplication {
 			flashcards.put("Object Oriented Programming", "designing a program by discovering objects, their properties, and their relationships");
 			flashcards.put("Primitives", "a data type structured by Java to hold a single data item (Integer, character, floating point, true/false, long)");
 			flashcards.put("Syntax", "rules that define how to form instructions in a particular programming language");
-			FlashcardSets APUSHSet = new FlashcardSets();
-			APUSHSet.setName("APCSA Set");
-			APUSHSet.setFlashcards(flashcards);
-			repository.save(APUSHSet);
-			return new ResponseEntity<>(APUSHSet, HttpStatus.OK);
+			FlashcardSets APCSASet = new FlashcardSets();
+			APCSASet.setName("APCSA Set");
+			APCSASet.setFlashcards(flashcards);
+			repository.save(APCSASet);
+			return new ResponseEntity<>(APCSASet, HttpStatus.OK);
 	}
 }
