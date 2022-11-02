@@ -27,7 +27,7 @@ public class QuizMeApplication {
 		
     }
 
-	@PostMapping("/new")
+	@PostMapping("/new2")
 	public ResponseEntity<FlashcardSets> createFlashcard () {
 		Map <String, String> flashcards = new HashMap<>();
 			flashcards.put("Accessor Method", "a method that accesses an object but does not change it, actual parameter - the expression supplied by the caller");
