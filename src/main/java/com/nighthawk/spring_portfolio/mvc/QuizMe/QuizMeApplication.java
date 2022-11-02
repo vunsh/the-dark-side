@@ -29,7 +29,7 @@ public class QuizMeApplication {
 
 	@PostMapping("/new")
 	public ResponseEntity<FlashcardSets> createFlashcard () {
-		Map <String, String> flashcards = new HashMap<>();
+		Map <String, String> csflashcards = new HashMap<>();
 		flashcards.put("Accessor Method", "a method that accesses an object but does not change it, actual parameter - the expression supplied by the caller");
 		flashcards.put("Binary", "the binary, or the base-2, positional numbering system represents numerical values using only two symbols, 0 and 1");
 		flashcards.put("Boolean Operator", "an operator that can be applied to Boolean values. Java has 3 boolean, or logical, operators: &&, ||, and !.");
@@ -46,7 +46,7 @@ public class QuizMeApplication {
 		flashcards.put("Syntax", "rules that define how to form instructions in a particular programming language");
 		FlashcardSets APCSASet = new FlashcardSets();
 		APCSASet.setName("APCSA Set");
-		APCSASet.setFlashcards(flashcards);
+		APCSASet.setFlashcards(csflashcards);
 		repository.save(APCSASet);
 		return new ResponseEntity<>(APCSASet, HttpStatus.OK);
 	}
