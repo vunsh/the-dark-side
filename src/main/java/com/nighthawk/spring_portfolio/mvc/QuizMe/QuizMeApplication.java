@@ -45,7 +45,7 @@ public class QuizMeApplication {
 			flashcards.put("Primitives", "a data type structured by Java to hold a single data item (Integer, character, floating point, true/false, long)");
 			flashcards.put("Syntax", "rules that define how to form instructions in a particular programming language");
 		FlashcardSets APUSHSet = new FlashcardSets();
-		APUSHSet.setName("APUSH Set");
+		APUSHSet.setName("APCSA Set");
 		APUSHSet.setFlashcards(flashcards);
 		repository.save(APUSHSet);
 		return new ResponseEntity<>(APUSHSet, HttpStatus.OK);
