@@ -21,7 +21,7 @@ public class QuizMeApplication {
     @Autowired
     private QuizMeJpaRepository repository;
 
-   @GetMapping("/test")
+   @GetMapping("/test2")
     public ResponseEntity<List<FlashcardSets>> getFlashcard () {
         return new ResponseEntity<>( repository.findAll(), HttpStatus.OK);
 		
