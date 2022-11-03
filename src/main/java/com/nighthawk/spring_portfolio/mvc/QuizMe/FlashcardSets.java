@@ -19,6 +19,6 @@ public class FlashcardSets {
     @Column(unique=true)
     private String name;
 
-    @ElementCollection(fetch = FetchType.EAGER)
-    private Map <String, String> flashcards = new HashMap <>();
+    @Column()
+    private ArrayList <Flashcard> flashcards = new ArrayList <>();
 }
