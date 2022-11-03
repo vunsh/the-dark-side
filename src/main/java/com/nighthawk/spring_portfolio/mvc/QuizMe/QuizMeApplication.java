@@ -29,10 +29,10 @@ public class QuizMeApplication {
 
 	@PostMapping("/new")
 	public ResponseEntity<FlashcardSets> createFlashcard () {
-		ArrayList<Flashcard> flashcards = new ArrayList<>();
-		long id = 0;
+		ArrayList<Flashcard> flashcards = new ArrayList<>(); // defines flashcards as an array list
+		long id = 0; // sets id for all flashcards equal to 0 
 
-		flashcards.add(new Flashcard(id++, "Accessor Method", "a method that accesses an object but does not change it, actual parameter - the expression supplied by the caller"));
+		flashcards.add(new Flashcard(id++, "Accessor Method", "a method that accesses an object but does not change it, actual parameter - the expression supplied by the caller")); // creates terms andd definitions, adds 1 to the id of all flashcards so they can be sorted by id
 		flashcards.add(new Flashcard(id++, "Binary", "the binary, or the base-2, positional numbering system represents numerical values using only two symbols, 0 and 1"));
 		flashcards.add(new Flashcard(id++, "Boolean Operator", "an operator that can be applied to Boolean values. Java has 3 boolean, or logical, operators: &&, ||, and !."));
 		flashcards.add(new Flashcard(id++, "Cast", "Explicitly converting a value from one type to a different type"));
@@ -46,10 +46,10 @@ public class QuizMeApplication {
 		flashcards.add(new Flashcard(id++, "Object Oriented Programming", "designing a program by discovering objects, their properties, and their relationships"));
 		flashcards.add(new Flashcard(id++, "Primitives", "a data type structured by Java to hold a single data item (Integer, character, floating point, true/false, long)"));
 		flashcards.add(new Flashcard(id++, "Syntax", "rules that define how to form instructions in a particular programming language"));
-		FlashcardSets APCSASet = new FlashcardSets();
-		APCSASet.setName("APCSA Set");
+		FlashcardSets APCSASet = new FlashcardSets(); // defines this set as the ap csa set
+		APCSASet.setName("APCSA Set"); // display name is ap csa set
 		APCSASet.setFlashcards(flashcards);
-		repository.save(APCSASet);
+		repository.save(APCSASet); // saves to repository file
 		return new ResponseEntity<>(APCSASet, HttpStatus.OK);
 	}
 }
