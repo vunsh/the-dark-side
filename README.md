@@ -1,6 +1,4 @@
-[Spring Portfolio Starter](https://quizme.nighthawkcoders.tk)
-Runtime link: TBD https://quizme.nighthawkcoders.tk
-
+# [Spring Portfolio Starter](https://quizme.nighthawkcoders.tk)
 
 ## Visual thoughts
 #### * Starter code should be fun and practical
